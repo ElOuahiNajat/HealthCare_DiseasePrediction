@@ -2,7 +2,7 @@
 
 https://github.com/user-attachments/assets/5dcd46eb-d44d-4320-a44a-a7134fab1373
 
-# 🩺 HealthCare Disease Prediction
+#  HealthCare Disease Prediction
 
 Une application intelligente de prédiction des maladies à partir des symptômes fournis par l'utilisateur.  
 Elle utilise des algorithmes de machine learning pour identifier les maladies probables et proposer des précautions, des médicaments, des régimes alimentaires et des exercices recommandés.
@@ -10,17 +10,17 @@ Elle utilise des algorithmes de machine learning pour identifier les maladies pr
 ---
 
 
-## 🚀 Fonctionnalités
+##  Fonctionnalités
 
-- ✔️ Saisie des symptômes
-- ✔️ Prédiction de la maladie probable
-- ✔️ Recommandations de traitements, précautions et alimentation
-- ✔️ Interface utilisateur simple via Flask
-- ✔️ Modèles Machine Learning entraînés : Random Forest, SVC
+-  Saisie des symptômes
+-  Prédiction de la maladie probable
+-  Recommandations de traitements, précautions et alimentation
+-  Interface utilisateur simple via Flask
+-  Modèles Machine Learning entraînés : Random Forest, SVC
 
 ---
 
-## 🛠️ Technologies utilisées
+##  Technologies utilisées
 
 - Python
 - Flask
@@ -32,7 +32,7 @@ Elle utilise des algorithmes de machine learning pour identifier les maladies pr
 
 ---
 
-## ▶️ Exécution du projet
+## ▶ Exécution du projet
 
 1. **Cloner le repo**
 ```bash
