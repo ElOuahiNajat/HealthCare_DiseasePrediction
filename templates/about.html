@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Health Care Center</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #6c5ce7;
+            --secondary-color: #a29bfe;
+            --accent-color: #fd79a8;
+            --dark-color: #2d3436;
+            --light-color: #f5f6fa;
+            --success-color: #00b894;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f8f9fa;
+            color: var(--dark-color);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Navbar */
+        .custom-navbar {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%) !important;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            padding: 15px 0;
+        }
+
+        /* Hero Section */
+        .hero-about {
+            background: linear-gradient(rgba(108, 92, 231, 0.85), rgba(108, 92, 231, 0.85)), 
+                        url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            padding: 120px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-about::after {
+            content: '';
+            position: absolute;
+            bottom: -50px;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: white;
+            transform: skewY(-3deg);
+            z-index: 1;
+        }
+
+        /* Values Section */
+        .value-card {
+            border: none;
+            border-radius: 15px;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .value-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: -1;
+        }
+
+        .value-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .value-card:hover::before {
+            opacity: 1;
+        }
+
+        .value-card:hover .value-icon {
+            color: white;
+        }
+
+        .value-card:hover h4, 
+        .value-card:hover p {
+            color: white;
+        }
+
+        .value-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        /* Team Section */
+        .team-member {
+            position: relative;
+            margin-bottom: 30px;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .team-img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            transition: all 0.5s ease;
+        }
+
+        .team-overlay {
+            position: absolute;
+            bottom: -100%;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(108, 92, 231, 0.9));
+            color: white;
+            padding: 30px;
+            transition: all 0.5s ease;
+        }
+
+        .team-member:hover .team-overlay {
+            bottom: 0;
+        }
+
+        .team-member:hover .team-img {
+            transform: scale(1.1);
+        }
+
+        .social-links a {
+            color: white;
+            margin: 0 10px;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        /* Stats Section */
+        .stats-section {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 80px 0;
+            position: relative;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding: 50px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--secondary-color);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 50px;
+        }
+
+        .timeline-content {
+            width: 45%;
+            padding: 30px;
+            border-radius: 15px;
+            background: white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: auto;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-right: auto;
+        }
+
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            top: 30px;
+            width: 0;
+            height: 0;
+            border-style: solid;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content::before {
+            right: 100%;
+            border-width: 15px 15px 15px 0;
+            border-color: transparent white transparent transparent;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content::before {
+            left: 100%;
+            border-width: 15px 0 15px 15px;
+            border-color: transparent transparent transparent white;
+        }
+
+        .timeline-date {
+            position: absolute;
+            top: 20px;
+            width: 150px;
+            text-align: center;
+            background: var(--primary-color);
+            color: white;
+            padding: 10px;
+            border-radius: 30px;
+            font-weight: 600;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-date {
+            right: calc(55% + 30px);
+        }
+
+        .timeline-item:nth-child(even) .timeline-date {
+            left: calc(55% + 30px);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 30px;
+            }
+            
+            .timeline-content {
+                width: calc(100% - 80px);
+                margin-left: 80px !important;
+            }
+            
+            .timeline-content::before {
+                left: -15px !important;
+                right: auto !important;
+                border-width: 15px 15px 15px 0 !important;
+                border-color: transparent white transparent transparent !important;
+            }
+            
+            .timeline-date {
+                left: 30px !important;
+                right: auto !important;
+                top: -20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark custom-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+               Disease prediction
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/"><i class="fas fa-home me-1"></i> Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/about"><i class="fas fa-info-circle me-1"></i> About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/contact"><i class="fas fa-envelope me-1"></i> Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-about text-center">
+        <div class="container">
+            <h1 class="display-3 fw-bold mb-4 animate__animated animate__fadeInDown">Our Story</h1>
+            <p class="lead mb-5 animate__animated animate__fadeInUp animate__delay-1s">Bridging the gap between technology and compassionate healthcare</p>
+            <a href="#values" class="btn btn-light btn-lg px-4 py-2 animate__animated animate__fadeInUp animate__delay-2s">Discover Our Values</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="py-5" style="background: white;">
+        <div class="container py-5">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <h2 class="fw-bold mb-4">Who We Are</h2>
+                    <p class="lead mb-4">Founded in 2018, Health Center is a revolutionary healthcare platform combining artificial intelligence with medical expertise to provide personalized health solutions.</p>
+                    <p>Our team of doctors, data scientists, and healthcare professionals work tirelessly to develop innovative solutions that make healthcare more accessible, accurate, and affordable for everyone.</p>
+                    <div class="d-flex align-items-center mt-4">
+                        <div class="me-4">
+                            <h3 class="text-primary mb-0">50+</h3>
+                            <p>Medical Experts</p>
+                        </div>
+                        <div class="me-4">
+                            <h3 class="text-primary mb-0">95%</h3>
+                            <p>Diagnosis Accuracy</p>
+                        </div>
+                        <div>
+                            <h3 class="text-primary mb-0">24/7</h3>
+                            <p>Availability</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <img src="https://images.unsplash.com/photo-1581093450021-4a7360e9a9d5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Medical Team" class="img-fluid rounded shadow-lg">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section id="values" class="py-5" style="background: var(--light-color);">
+        <div class="container py-5">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Our Core Values</h2>
+                <p class="lead">The principles that guide everything we do</p>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="value-card p-4 h-100">
+                        <div class="text-center">
+                            <div class="value-icon">
+                                <i class="fas fa-heartbeat"></i>
+                            </div>
+                            <h4>Compassion</h4>
+                            <p>We treat every patient with empathy and understanding, remembering that behind every symptom is a human being.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="value-card p-4 h-100">
+                        <div class="text-center">
+                            <div class="value-icon">
+                                <i class="fas fa-lightbulb"></i>
+                            </div>
+                            <h4>Innovation</h4>
+                            <p>We constantly push boundaries to develop new solutions that improve healthcare outcomes and accessibility.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="value-card p-4 h-100">
+                        <div class="text-center">
+                            <div class="value-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <h4>Integrity</h4>
+                            <p>We maintain the highest ethical standards in all our practices and recommendations.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="py-5" style="background: white;">
+        <div class="container py-5">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Meet Our Leadership</h2>
+                <p class="lead">The brilliant minds behind our vision</p>
+            </div>
+            <!-- <div class="row">
+                <div class="col-md-4">
+                    <div class="team-member">
+                        <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Dr. Sarah Johnson" class="team-img">
+                        <div class="team-overlay">
+                            <h4>Dr. Sarah Johnson</h4>
+                            <p class="mb-3">Chief Medical Officer</p>
+                            <p class="mb-3">Harvard Medical School graduate with 15 years of clinical experience.</p>
+                            <div class="social-links">
+                                <a href="#"><i class="fab fa-linkedin"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fas fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="team-member">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Michael Chen" class="team-img">
+                        <div class="team-overlay">
+                            <h4>Michael Chen</h4>
+                            <p class="mb-3">Chief Technology Officer</p>
+                            <p class="mb-3">AI pioneer with expertise in medical machine learning applications.</p>
+                            <div class="social-links">
+                                <a href="#"><i class="fab fa-linkedin"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fas fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="team-member">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Dr. Amina Patel" class="team-img">
+                        <div class="team-overlay">
+                            <h4>Dr. Amina Patel</h4>
+                            <p class="mb-3">Head of Patient Care</p>
+                            <p class="mb-3">Renowned specialist in preventive medicine and holistic care.</p>
+                            <div class="social-links">
+                                <a href="#"><i class="fab fa-linkedin"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fas fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="stat-item">
+                        <div class="stat-number">10K+</div>
+                        <p>Patients Helped</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stat-item">
+                        <div class="stat-number">150+</div>
+                        <p>Conditions Detected</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stat-item">
+                        <div class="stat-number">98%</div>
+                        <p>Satisfaction Rate</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stat-item">
+                        <div class="stat-number">24/7</div>
+                        <p>Support Available</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section class="py-5" style="background: var(--light-color);">
+        <div class="container py-5">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Our Journey</h2>
+                <p class="lead">Milestones in revolutionizing healthcare</p>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">2018</div>
+                    <div class="timeline-content">
+                        <h4>Foundation</h4>
+                        <p>Health Center was founded by Dr. Sarah Johnson and Michael Chen with a vision to democratize healthcare through technology.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2019</div>
+                    <div class="timeline-content">
+                        <h4>First Prototype</h4>
+                        <p>Launched our first AI diagnostic tool capable of recognizing 50 common conditions with 85% accuracy.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2020</div>
+                    <div class="timeline-content">
+                        <h4>Medical Certification</h4>
+                        <p>Received certification from the Medical AI Board for our diagnostic algorithms.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2023</div>
+                    <div class="timeline-content">
+                        <h4>Current</h4>
+                        <p>Serving patients in 15 countries with our comprehensive AI health assistant platform.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-5" style="background: white;">
+        <div class="container py-5 text-center">
+            <h2 class="fw-bold mb-4">Ready to Experience the Future of Healthcare?</h2>
+            <p class="lead mb-5">Join thousands of satisfied patients who have transformed their health journey</p>
+            <a href="/contact" class="btn btn-primary btn-lg px-5 py-3">Get Started Today</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-5" style="background: var(--dark-color); color: white;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <h5>Health Center</h5>
+                    <p>Innovative healthcare solutions powered by AI and compassion.</p>
+                    <div class="social-links">
+                        <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-2 mb-4 mb-md-0">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="/" class="text-white">Home</a></li>
+                        <li><a href="/about" class="text-white">About Us</a></li>
+                        <li><a href="/contact" class="text-white">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 mb-4 mb-md-0">
+                    <h5>Contact Info</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-map-marker-alt me-2"></i> 123 Health St, Medical City</li>
+                        <li><i class="fas fa-phone me-2"></i> +1 (555) 123-4567</li>
+                        <li><i class="fas fa-envelope me-2"></i> info@healthcenter.com</li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Newsletter</h5>
+                    <p>Subscribe to our health tips and updates</p>
+                    <div class="input-group mb-3">
+                        <input type="email" class="form-control" placeholder="Your Email">
+                        <button class="btn btn-primary" type="button">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4 bg-light">
+            <div class="text-center">
+                <p class="mb-0">&copy; 2023 Health Center. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Animation au scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const animateElements = document.querySelectorAll('.value-card, .team-member, .timeline-item');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate__animated', 'animate__fadeInUp');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            animateElements.forEach(element => {
+                observer.observe(element);
+            });
+        });
+    </script>
+</body>
+</html>
